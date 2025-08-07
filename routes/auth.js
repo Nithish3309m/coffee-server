@@ -50,6 +50,9 @@ route.post('/login', async (req, res) => {
         if (user.status === 'Blocked') {
             return res.status(403).json({ success: false, message: "Your account has been blocked by the admin." });
         }
+         if (user.role === 'admin') {
+            return res.status(403).json({ success: false, message: "Your account is admin cannot login here." });
+        }
 
 
         const check = await bcrypt.compare(password, user.password);
