@@ -51,7 +51,7 @@ route.post('/login', async (req, res) => {
             return res.status(403).json({ success: false, message: "Your account has been blocked by the admin." });
         }
          if (user.role === 'admin') {
-            return res.status(403).json({ success: false, message: "Your account is admin cannot login here." });
+            return res.status(401).json({ success: false, message: "Your account is admin cannot login here." });
         }
 
 
